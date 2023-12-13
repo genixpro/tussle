@@ -1,10 +1,10 @@
 from tussle.general.api_server.test_api_server import TestAPIServer
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 import datetime
 import requests
 import unittest
 
-class HomeAPITest(ArticulonTestCaseBase):
+class HomeAPITest(TussleTestCaseBase):
     test_api_port = 6006
 
     def setUp(self):

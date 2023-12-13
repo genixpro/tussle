@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tussle-__ARTICULON_ENV__-frontend
-  name: tussle-__ARTICULON_ENV__-frontend
+    app: tussle-__TUSSLE_ENV__-frontend
+  name: tussle-__TUSSLE_ENV__-frontend
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: tussle-__ARTICULON_ENV__-frontend
+      app: tussle-__TUSSLE_ENV__-frontend
   strategy:
     rollingUpdate:
       maxSurge: __MAX_SURGE__
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app: tussle-__ARTICULON_ENV__-frontend
+        app: tussle-__TUSSLE_ENV__-frontend
     spec:
       containers:
         - image: us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:__REVISION_ID__

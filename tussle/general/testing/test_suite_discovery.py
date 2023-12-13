@@ -5,7 +5,7 @@ from tussle.general.testing.test_case_time_tracker import get_expected_time_for_
 
 def discover_complete_test_suite():
     """
-    This will autodiscover all the tests within Articulon, and build up a python native unittest.TestSuite object
+    This will autodiscover all the tests within Tussle, and build up a python native unittest.TestSuite object
     composed of all of those tests.
     :return:
     """
@@ -16,7 +16,7 @@ def discover_complete_test_suite():
 
 def discover_fast_test_suite():
     """
-    This will autodiscover all the tests within Articulon, but filter them for only tests that execute really
+    This will autodiscover all the tests within Tussle, but filter them for only tests that execute really
     fast. It returns a test suite that can be executed very quickly for pre-commit checks.
     :return:
     """
@@ -24,9 +24,9 @@ def discover_fast_test_suite():
 
 def discover_slow_test_suite():
     """
-    This will autodiscover all the tests within Articulon, but filter them for only tests that
+    This will autodiscover all the tests within Tussle, but filter them for only tests that
     execute slowly. It returns the opposite of discover_fast_test_suite. The two of them together
-    will execute all the tests within Articulon.
+    will execute all the tests within Tussle.
     :return:
     """
 
@@ -34,7 +34,7 @@ def discover_slow_test_suite():
 
 def discover_rapid_internal_only_test_suite():
     """
-    This will autodiscover all the tests within Articulon, but filter them for tests that both
+    This will autodiscover all the tests within Tussle, but filter them for tests that both
     execute fast and do not have external dependencies. It returns a test suite that can be executed
     very quickly with no external dependencies.
 
@@ -46,7 +46,7 @@ def discover_rapid_internal_only_test_suite():
 
 def discover_internal_only_test_suite():
     """
-    This will autodiscover all the tests within Articulon, but filter them for tests that don't depend
+    This will autodiscover all the tests within Tussle, but filter them for tests that don't depend
     upon amqp, mongodb or other external services.
 
     :return:
@@ -57,7 +57,7 @@ def discover_internal_only_test_suite():
 
 def discover_external_test_suite():
     """
-    This will autodiscover all the tests within Articulon, but filter them for tests that don't depend
+    This will autodiscover all the tests within Tussle, but filter them for tests that don't depend
     upon amqp, mongodb or other external services.
 
     :return:
@@ -68,7 +68,7 @@ def discover_external_test_suite():
 
 def discover_filtered_test_suite(filter_func):
     """
-    This will autodiscover all the tests within Articulon, but filter them for test cases that
+    This will autodiscover all the tests within Tussle, but filter them for test cases that
     pass the given filter function.
     :return:
     """

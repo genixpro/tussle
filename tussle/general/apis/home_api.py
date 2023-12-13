@@ -14,7 +14,7 @@ class Home(Resource):
 
         response_data = {
             # This name field is checked for in cicd
-            "name": "Articulon API Server",
+            "name": "Tussle API Server",
             "version": str(version),
             "start_time": self.startTime.isoformat(),
             "current_time": datetime.datetime.now().isoformat(),

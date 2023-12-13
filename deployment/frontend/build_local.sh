@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 export REVISION_ID=$(git rev-parse HEAD)
-export ARTICULON_ENV=production
+export TUSSLE_ENV=production
 export DOCKER_BUILDKIT=1
 
 
@@ -19,7 +19,7 @@ docker build -t frontend \
              -t us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:$REVISION_ID \
              -t us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:latest \
              -f frontend/Dockerfile \
-             --build-arg ARTICULON_ENV=$ARTICULON_ENV \
+             --build-arg TUSSLE_ENV=$TUSSLE_ENV \
              --build-arg REVISION_ID=$REVISION_ID \
              ..
 

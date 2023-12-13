@@ -1,9 +1,9 @@
 from tussle.general.api_server.test_api_server import TestAPIServer
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 import requests
 import unittest
 
-class HealthCheckAPITest(ArticulonTestCaseBase):
+class HealthCheckAPITest(TussleTestCaseBase):
     test_api_port = 6007
 
     def __init__(self, *args, **kwargs):

@@ -1,10 +1,10 @@
 from tussle.general.api_server.test_api_server import TestAPIServer
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 import datetime
 import requests
 import unittest
 
-class HomeAPITest(ArticulonTestCaseBase):
+class HomeAPITest(TussleTestCaseBase):
     test_api_port = 6006
 
     def setUp(self):
@@ -39,7 +39,7 @@ class HomeAPITest(ArticulonTestCaseBase):
         self.assertNotEqual("", response_data['name'])
 
         # Check the name is the correct value
-        self.assertEqual("Articulon API Server", response_data['name'])
+        self.assertEqual("Tussle API Server", response_data['name'])
 
     def check_response_host_is_correct(self, response_data):
         # Check the response contains a host field

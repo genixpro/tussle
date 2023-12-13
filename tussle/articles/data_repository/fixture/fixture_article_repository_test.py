@@ -1,10 +1,10 @@
 from tussle.articles.data_repository.article_repository_test_base import ArticleRepositoryTestBase
 from .fixture_article_repository import FixtureArticleRepository
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.articles.components.article import Article
 
 
-class FixtureArticleRepositoryTest(ArticleRepositoryTestBase, ArticulonTestCaseBase):
+class FixtureArticleRepositoryTest(ArticleRepositoryTestBase, TussleTestCaseBase):
     def create_article_repository(self):
         return FixtureArticleRepository()
 

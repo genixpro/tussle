@@ -12,7 +12,7 @@ export function TopBar() {
                 <img src={"/logo.png"} alt={"logo"} className={"logo-image"}/>
             </div>
 
-            <span className={"logo-text"}>Articulon</span>
+            <span className={"logo-text"}>Tussle</span>
         </div>
 
 

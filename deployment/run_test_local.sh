@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 export REVISION_ID=$(git rev-parse HEAD)
-export ARTICULON_ENV=testing
+export TUSSLE_ENV=testing
 export DOCKER_BUILDKIT=1
 
 # First locally build the testing containers.
@@ -13,7 +13,7 @@ echo "The GCP Token is $GCP_APPLICATION_TOKEN"
 
 # Now set the GOOGLE_APPLICATION_CREDENTIALS env var to the key.json file
 docker run --env GOOGLE_APPLICATION_CREDENTIALS="/tussle/key.json"  \
-        --env ARTICULON_ENV="testing" \
+        --env TUSSLE_ENV="testing" \
         --env GCP_APPLICATION_TOKEN="$GCP_APPLICATION_TOKEN" \
         --env GOOGLE_CLOUD_PROJECT="tussle" \
         --env REVISION_ID="$REVISION_ID" \

@@ -7,7 +7,7 @@ steps:
       - "--cache-ttl=720h"
       - "--snapshot-mode=time"
       - "--build-arg"
-      - "ARTICULON_ENV=$_ARTICULON_ENV"
+      - "TUSSLE_ENV=$_TUSSLE_ENV"
       - "--build-arg"
       - "REVISION_ID=$REVISION_ID"
       - "-f"
@@ -23,7 +23,7 @@ steps:
       - "--cache-ttl=720h"
       - "--snapshot-mode=time"
       - "--build-arg"
-      - "ARTICULON_ENV=$_ARTICULON_ENV"
+      - "TUSSLE_ENV=$_TUSSLE_ENV"
       - "--build-arg"
       - "REVISION_ID=$REVISION_ID"
       - "-f"
@@ -49,7 +49,7 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
-      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'TUSSLE_ENV=$_TUSSLE_ENV'
       - 'REVISION_ID=$REVISION_ID'
     waitFor:
       - Build API Server Docker Image
@@ -64,7 +64,7 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
-      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'TUSSLE_ENV=$_TUSSLE_ENV'
       - 'REVISION_ID=$REVISION_ID'
     timeout: 600s
     waitFor:
@@ -79,7 +79,7 @@ steps:
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
-      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'TUSSLE_ENV=$_TUSSLE_ENV'
       - 'REVISION_ID=$REVISION_ID'
     timeout: 600s
     waitFor:

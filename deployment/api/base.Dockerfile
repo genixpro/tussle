@@ -2,7 +2,7 @@
 # This builds an all-in-one easy to install dockerfile
 
 FROM ubuntu:22.04
-MAINTAINER Articulon <genixpro@gmail.com>
+MAINTAINER Tussle <genixpro@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 

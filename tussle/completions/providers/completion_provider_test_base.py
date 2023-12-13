@@ -1,9 +1,9 @@
 import unittest
 from tussle.completions.event_listeners.unit_test_completion_event_listener import UnitTestCompletionEventListener
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.completions.event_listeners.completion_event import CompletionEventTypes
 
-class CompletionProviderTestBase(ArticulonTestCaseBase):
+class CompletionProviderTestBase(TussleTestCaseBase):
     """
         A base class for all the completion provider tests.
     """

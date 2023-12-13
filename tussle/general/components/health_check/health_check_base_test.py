@@ -1,6 +1,6 @@
 import unittest
 import datetime
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.general.components.health_check.health_check_base import HealthCheckBase
 import time
 
@@ -27,7 +27,7 @@ class UnitTestHealthCheck(HealthCheckBase):
                 "details": {}
             }
 
-class HealthCheckBaseTest(ArticulonTestCaseBase):
+class HealthCheckBaseTest(TussleTestCaseBase):
     def test_run_error_handling(self):
         """
         This function tests the handling of the run() function in the HealthCheckBase class.

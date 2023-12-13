@@ -2,11 +2,11 @@ import unittest
 import requests
 import pkg_resources
 import json
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.general.api_server.test_api_server import TestAPIServer
 
 
-class ArticleAPITest(ArticulonTestCaseBase):
+class ArticleAPITest(TussleTestCaseBase):
     test_api_port = 6005
 
     def setUp(self):

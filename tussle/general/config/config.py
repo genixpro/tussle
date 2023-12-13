@@ -10,7 +10,7 @@ def load_internal_only_configuration():
     return data
 
 def determine_environment():
-    environment = os.getenv("ARTICULON_ENV")
+    environment = os.getenv("TUSSLE_ENV")
 
     if environment is None or environment == "":
         environment = "development"

@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: tussle-__ARTICULON_ENV__-api
-  name: tussle-__ARTICULON_ENV__-api
+    app: tussle-__TUSSLE_ENV__-api
+  name: tussle-__TUSSLE_ENV__-api
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: tussle-__ARTICULON_ENV__-api
+      app: tussle-__TUSSLE_ENV__-api
   strategy:
     rollingUpdate:
       maxSurge: __MAX_SURGE__
@@ -17,13 +17,13 @@ spec:
   template:
     metadata:
       labels:
-        app: tussle-__ARTICULON_ENV__-api
+        app: tussle-__TUSSLE_ENV__-api
     spec:
       containers:
         - name: main-api
           env:
-            - name: ARTICULON_ENV
-              value: __ARTICULON_ENV__
+            - name: TUSSLE_ENV
+              value: __TUSSLE_ENV__
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /etc/gcp/key.json
           image: us-central1-docker.pkg.dev/tussle/tussle-api/tussle-api:__REVISION_ID__

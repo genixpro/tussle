@@ -6,8 +6,8 @@ import time
 import datetime
 import timeout_decorator
 
-class ArticulonTestCaseBase(unittest.TestCase):
-    logger = get_logger("ArticulonTestCaseBase")
+class TussleTestCaseBase(unittest.TestCase):
+    logger = get_logger("TussleTestCaseBase")
 
     container = None
     start_time: datetime.datetime = None
@@ -29,7 +29,7 @@ class ArticulonTestCaseBase(unittest.TestCase):
         for attr_name in dir(cls):
             attr = getattr(cls, attr_name)
             if attr_name.startswith("test_") and callable(attr):
-                setattr(cls, attr_name, timeout_decorator.timeout(ArticulonTestCaseBase.single_test_timeout)(attr))
+                setattr(cls, attr_name, timeout_decorator.timeout(TussleTestCaseBase.single_test_timeout)(attr))
 
     @classmethod
     def tearDownClass(cls):
@@ -58,7 +58,7 @@ class ArticulonTestCaseBase(unittest.TestCase):
         """
         self.origTestMethodName = self._testMethodName
 
-        for attempt_number in range(ArticulonTestCaseBase.test_retry_count):
+        for attempt_number in range(TussleTestCaseBase.test_retry_count):
             error_count_before_test_run = len(result.errors)  # check how many tests that are marked as failed before starting
             failure_count_before_test_run = len(result.failures)  # check how many tests that are marked as failed before starting
 
@@ -85,7 +85,7 @@ class ArticulonTestCaseBase(unittest.TestCase):
                 # We're good. Test passed.
                 record_test_method_time_taken(self.__class__.__name__,  str(self.origTestMethodName), time_used)
                 break
-            elif attempt_number == ArticulonTestCaseBase.test_retry_count - 1:
+            elif attempt_number == TussleTestCaseBase.test_retry_count - 1:
                 # We're out of retries. Test failed.
                 break
             else:
@@ -95,7 +95,7 @@ class ArticulonTestCaseBase(unittest.TestCase):
                 while len(result.failures) > failure_count_before_test_run:
                     result.failures.pop(-1)
 
-                self.logger.error(f"Test failed - {self.__class__.__name__}.{str(self.origTestMethodName)} - attempt {attempt_number + 1} of {ArticulonTestCaseBase.test_retry_count}. Retrying...")
+                self.logger.error(f"Test failed - {self.__class__.__name__}.{str(self.origTestMethodName)} - attempt {attempt_number + 1} of {TussleTestCaseBase.test_retry_count}. Retrying...")
 
                 # A small exponential backoff on retrying
                 time.sleep(2 ** attempt_number)

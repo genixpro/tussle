@@ -1,9 +1,9 @@
 import unittest
 import concurrent.futures
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.general.components.health_check.db_access_health_check import DbAccessHealthCheck
 
-class DbAccessHealthCheckTest(ArticulonTestCaseBase):
+class DbAccessHealthCheckTest(TussleTestCaseBase):
     def test_health_check(self):
         """
         Checks that we can run the health check, and that it passes in the testing configuration.

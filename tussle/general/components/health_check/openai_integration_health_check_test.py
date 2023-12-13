@@ -1,8 +1,8 @@
 import unittest
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.general.components.health_check.openai_integration_health_check import OpenAIIntegrationHealthCheck
 
-class OpenAIIntegrationHealthCheckTest(ArticulonTestCaseBase):
+class OpenAIIntegrationHealthCheckTest(TussleTestCaseBase):
     def test_health_check(self):
         """
         Checks that we can run the health check, and that it passes in the testing configuration.

@@ -1,8 +1,8 @@
 import unittest
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.general.components.health_check.combined_concurrent_health_check import CombinedConcurrentHealthCheck
 
-class CombinedConcurrentHealthCheckTest(ArticulonTestCaseBase):
+class CombinedConcurrentHealthCheckTest(TussleTestCaseBase):
 
     def test_health_check(self):
         """

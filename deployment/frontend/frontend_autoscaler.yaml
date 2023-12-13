@@ -2,13 +2,13 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   labels:
-    app: tussle-__ARTICULON_ENV__-frontend
-  name: tussle-__ARTICULON_ENV__-frontend-hpa
+    app: tussle-__TUSSLE_ENV__-frontend
+  name: tussle-__TUSSLE_ENV__-frontend-hpa
 spec:
   maxReplicas: __MAXIMUM_REPLICATIONS__
   minReplicas: __MINIMUM_REPLICATIONS__
   scaleTargetRef:
     apiVersion: apps/v1beta1
     kind: Deployment
-    name: tussle-__ARTICULON_ENV__-frontend
+    name: tussle-__TUSSLE_ENV__-frontend
   targetCPUUtilizationPercentage: 80

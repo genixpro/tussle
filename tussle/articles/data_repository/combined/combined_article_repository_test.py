@@ -1,12 +1,12 @@
 from tussle.articles.data_repository.article_repository_test_base import ArticleRepositoryTestBase
 from tussle.articles.data_repository.memory.memory_article_repository import MemoryArticleRepository
 from .combined_article_repository import CombinedArticleRepository
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from tussle.articles.components.article import Article
 import pkg_resources
 
 
-class CombinedArticleRepositoryTest(ArticleRepositoryTestBase, ArticulonTestCaseBase):
+class CombinedArticleRepositoryTest(ArticleRepositoryTestBase, TussleTestCaseBase):
     def create_article_repository(self):
         self.primary = MemoryArticleRepository()
         self.fallback1 = MemoryArticleRepository()

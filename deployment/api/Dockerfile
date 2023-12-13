@@ -2,7 +2,7 @@
 # This builds an all-in-one easy to install dockerfile
 
 FROM  us-central1-docker.pkg.dev/tussle/tussle-api/tussle-api-base:latest
-MAINTAINER Articulon <genixpro@gmail.com>
+MAINTAINER Tussle <genixpro@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -21,9 +21,9 @@ RUN python3 setup.py install && \
     rm -rf /root/.cache && \
     chmod +r+r+r -R /usr/lib/python3/
 
-ARG ARTICULON_ENV
+ARG TUSSLE_ENV
 ARG REVISION_ID
-ENV ARTICULON_ENV=${ARTICULON_ENV}
+ENV TUSSLE_ENV=${TUSSLE_ENV}
 ENV REVISION_ID=${REVISION_ID}
 
 

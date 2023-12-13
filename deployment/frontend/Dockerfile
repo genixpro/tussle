@@ -2,14 +2,14 @@
 # This builds an all-in-one easy to install dockerfile
 
 FROM  us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend-base:latest
-MAINTAINER Articulon <genixpro@gmail.com>
+MAINTAINER Tussle <genixpro@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
-ARG ARTICULON_ENV
+ARG TUSSLE_ENV
 
 # Copy the NGINX configuration
 ADD deployment/frontend/nginx_config /etc/nginx/sites-enabled/default
-RUN sed "s/__ARTICULON_ENV__/${ARTICULON_ENV}/g" -i /etc/nginx/sites-enabled/default
+RUN sed "s/__TUSSLE_ENV__/${TUSSLE_ENV}/g" -i /etc/nginx/sites-enabled/default
 
 # Copy the source code into the container at /tussle
 ADD tussle /tussle/tussle
@@ -19,10 +19,10 @@ ADD --chown=tussle:tussle --chmod=777 .env.* /tussle
 
 # Set the working directory to /tussle, and build the frontend package
 WORKDIR /tussle
-ENV ARTICULON_ENV=${ARTICULON_ENV}
+ENV TUSSLE_ENV=${TUSSLE_ENV}
 ENV REVISION_ID=${REVISION_ID}
 
-RUN cp .env.${ARTICULON_ENV} .env.chosen
+RUN cp .env.${TUSSLE_ENV} .env.chosen
 RUN rm .env.production
 RUN mv .env.chosen .env.production
 

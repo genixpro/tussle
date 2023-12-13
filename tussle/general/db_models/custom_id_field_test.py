@@ -1,10 +1,10 @@
 import datetime
-from tussle.general.testing.test_case_base import ArticulonTestCaseBase
+from tussle.general.testing.test_case_base import TussleTestCaseBase
 from. custom_id_field import CustomIDField
 import re
 import concurrent.futures
 
-class CustomIDFieldTests(ArticulonTestCaseBase):
+class CustomIDFieldTests(TussleTestCaseBase):
 
     def test_generated_id_format(self):
         test_reference_time = datetime.datetime.now()
