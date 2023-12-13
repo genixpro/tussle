@@ -7,12 +7,7 @@ import "./HomePage.scss";
 export function HomePage() {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        navigate("/article/what-is-the-dataset-hustle");
-    }, [navigate]);
-
-
-    // Don't do anything on the home except redirect to a valid article slug.
+    // Load up the debate page
     return <PageWrapper>
 
     </PageWrapper>

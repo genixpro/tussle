@@ -18,7 +18,7 @@ def determine_environment():
     return environment
 
 def configure_environment_variables():
-    os.environ['GOOGLE_CLOUD_PROJECT'] = 'tussle'
+    os.environ['GOOGLE_CLOUD_PROJECT'] = 'notional-clover-408014'
     return os.environ
 
 

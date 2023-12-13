@@ -7,7 +7,6 @@ import {useAuth0} from '@auth0/auth0-react';
 import axios from "axios";
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import {apiAccessTokenContext} from "../components/api";
-import {ViewArticlePage} from "../pages/ViewArticlePage";
 import {HomePage} from "../pages/HomePage";
 import {SnackbarProvider} from "../components/SnackbarProvider";
 import {LoginPage} from "../pages/LoginPage";
@@ -20,12 +19,6 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage />,
-    },
-    {
-        path: "/article/:articleId",
-        element: (
-            <ViewArticlePage />
-        ),
     },
 ]);
 

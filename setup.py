@@ -10,7 +10,7 @@ with open("requirements.txt", 'rt') as f:
 setup(
     name='tussle',
     version='0.0.1',
-    description="Tussle - Debate with strangers',
+    description="Tussle - Debate with strangers",
     long_description=open("README.md", "rt").read(),
     classifiers=[
         'Programming Language :: Python',

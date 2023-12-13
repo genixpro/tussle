@@ -2,7 +2,7 @@ from tussle.general.logger import get_logger
 from tussle.general.db_models.custom_id_field import CustomIDField
 from dependency_injector.wiring import inject, Provide
 from .health_check_base import HealthCheckBase
-from tussle.articles.data_repository.mongo.mongo_article_repository import MongoArticleRepository
+from tussle.debate.data_repository.mongo.mongo_answer_repository import MongoAnswerRepository
 import traceback
 import random
 

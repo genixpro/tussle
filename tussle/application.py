@@ -7,7 +7,9 @@ from tussle.completions.providers.combined_completion_provider import CombinedCo
 from tussle.integrations.mongo.mongo_integration import connect_to_database_pymongo
 from tussle.general.config.config import load_cloud_configuration, configure_environment_variables
 from tussle.integrations.openai.openai_integration import OpenAIIntegration
-from tussle.articles.data_repository.mongo.mongo_article_repository import MongoArticleRepository
+
+from tussle.debate.data_repository.mongo.mongo_topic_repository import MongoTopicRepository
+from tussle.debate.data_repository.mongo.mongo_answer_repository import MongoAnswerRepository
 
 
 class Application(containers.DeclarativeContainer):
@@ -63,8 +65,13 @@ class Application(containers.DeclarativeContainer):
         combined=combined_completion_provider,
     )
 
-    article_repository = providers.ThreadSafeSingleton(
-        MongoArticleRepository,
+    answer_repository = providers.ThreadSafeSingleton(
+        MongoAnswerRepository,
+        mongo_db_connection,
+    )
+
+    topic_repository = providers.ThreadSafeSingleton(
+        MongoTopicRepository,
         mongo_db_connection,
     )
 
@@ -84,7 +91,8 @@ def create_and_initialization_application_container():
     # Here we explicitly wire the packages that matter, so that it doesn't try to search and load everything.
     # This is to improve the server load time.
     container.wire(modules=[
-        'tussle.articles.apis.article_api',
+        'tussle.debate.apis.answer_api',
+        'tussle.debate.apis.topic_api',
         'tussle.completions.utils.completion_utils',
         'tussle.completions.apis.completion_api',
         'tussle.general.api_server.permissions',

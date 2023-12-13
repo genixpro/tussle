@@ -21,7 +21,7 @@ export function ArticleList() {
                 setArticles(data);
                 setIsLoading(false);
 
-                // We still fetch the articles from the underlying API server as well, just in case
+                // We still fetch the debate from the underlying API server as well, just in case
                 // cache is stale (and it also forces the server to wake up if needed)
                 api.getArticles().then((data) => {
                     setArticles(data);
