@@ -1,0 +1,37 @@
+steps:
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    id: Build Frontend Docker Image
+    args:
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:$REVISION_ID"
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:latest"
+      - "--cache=true"
+      - "--cache-ttl=720h"
+      - "--snapshot-mode=time"
+      - "--build-arg"
+      - "ARTICULON_ENV=$_ARTICULON_ENV"
+      - "--build-arg"
+      - "REVISION_ID=$REVISION_ID"
+      - "-f"
+      - "deployment/frontend/Dockerfile"
+    timeout: 600s
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'cluster-info'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
+    timeout: 30s
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: Update Frontend Server Deployment
+    entrypoint: /bin/bash
+    args:
+      - "./deployment/frontend/update_frontend_server.sh"
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
+      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'REVISION_ID=$REVISION_ID'
+    timeout: 600s
+timeout: 3600s
+options:
+  machineType: 'E2_MEDIUM'

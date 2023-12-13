@@ -1,0 +1,25 @@
+
+.footer {
+  background-color: white;
+  height: 18px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+  font-size: 0.5em;
+  font-style: italic;
+  color: #888;
+
+  a, span {
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #00b;
+      text-decoration: underline;
+    }
+  }
+}

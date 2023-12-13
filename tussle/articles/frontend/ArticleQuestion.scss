@@ -1,0 +1,16 @@
+.article-question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .article-card {
+    width: 100%;
+    text-align: center;
+
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}

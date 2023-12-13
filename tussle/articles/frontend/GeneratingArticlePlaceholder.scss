@@ -1,0 +1,26 @@
+.generating-article-placeholder {
+  position: absolute;
+  left: 35vw;
+  right: 35vw;
+  width: 30vw;
+
+  top: 35vh;
+  height: 30vh;
+  bottom: 35vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .generating-article-placeholder-card {
+    width: 100%;
+    text-align: center;
+
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}

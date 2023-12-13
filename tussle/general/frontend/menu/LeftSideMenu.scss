@@ -1,0 +1,29 @@
+.left-side-menu {
+  border-right: 1px solid #ccc;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: calc(max(18vw, 100px));
+
+  padding-top: 30px;
+
+  .menu-article-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    overflow-y: auto;
+
+    .article-list-header {
+      align-self: flex-start;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}

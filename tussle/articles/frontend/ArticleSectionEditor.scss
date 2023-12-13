@@ -1,0 +1,19 @@
+
+
+.article-section-editor {
+  .MuiCardContent-root {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .filled-prompt {
+    font-family: monospace;
+    font-size: 1.2em;
+    white-space: pre-wrap;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+}

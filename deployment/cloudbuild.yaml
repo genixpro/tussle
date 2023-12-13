@@ -1,0 +1,91 @@
+steps:
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    id: Build API Server Docker Image
+    args:
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-api/tussle-api:$REVISION_ID"
+      - "--cache=true"
+      - "--cache-ttl=720h"
+      - "--snapshot-mode=time"
+      - "--build-arg"
+      - "ARTICULON_ENV=$_ARTICULON_ENV"
+      - "--build-arg"
+      - "REVISION_ID=$REVISION_ID"
+      - "-f"
+      - "deployment/api/Dockerfile"
+    timeout: 1800s
+    waitFor:
+      - "-"
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    id: Build Frontend Docker Image
+    args:
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:$REVISION_ID"
+      - "--cache=true"
+      - "--cache-ttl=720h"
+      - "--snapshot-mode=time"
+      - "--build-arg"
+      - "ARTICULON_ENV=$_ARTICULON_ENV"
+      - "--build-arg"
+      - "REVISION_ID=$REVISION_ID"
+      - "-f"
+      - "deployment/frontend/Dockerfile"
+    timeout: 1200s
+    waitFor:
+      - "-"
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Check Kubernetes Cluster Access
+    args:
+      - 'cluster-info'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
+    timeout: 30s
+    waitFor:
+      - "-"
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: Update Deployment on Kubernetes
+    entrypoint: /bin/bash
+    args:
+      - "./deployment/api/update_api_server.sh"
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
+      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'REVISION_ID=$REVISION_ID'
+    waitFor:
+      - Build API Server Docker Image
+      - Build Frontend Docker Image
+      - Check Kubernetes Cluster Access
+    timeout: 600s
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: Update Frontend Server Deployment
+    entrypoint: /bin/bash
+    args:
+      - "./deployment/frontend/update_frontend_server.sh"
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
+      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'REVISION_ID=$REVISION_ID'
+    timeout: 600s
+    waitFor:
+      - Build API Server Docker Image
+      - Build Frontend Docker Image
+      - Check Kubernetes Cluster Access
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: Update Worker Deployment
+    entrypoint: /bin/bash
+    args:
+      - "./deployment/worker/update_worker.sh"
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=tussle-central'
+      - 'ARTICULON_ENV=$_ARTICULON_ENV'
+      - 'REVISION_ID=$REVISION_ID'
+    timeout: 600s
+    waitFor:
+      - Build API Server Docker Image
+      - Build Frontend Docker Image
+      - Check Kubernetes Cluster Access
+timeout: 15000s
+options:
+  machineType: 'E2_MEDIUM'

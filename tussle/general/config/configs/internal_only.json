@@ -1,0 +1,33 @@
+{
+  "is_hosted": false,
+  "is_local": true,
+  "api": {
+    "force_auth_test_user": true
+  },
+  "completion": {
+    "completion_cache_number_of_variants_per_temperature_unit": 5.0
+  },
+  "db": {
+    "mongo_uri": "",
+    "username": null,
+    "password": null,
+    "db_name": "tussle"
+  },
+  "auth0": {
+    "client_id": "",
+    "client_secret": "",
+    "api_url": "http://localhost:5496/",
+    "key_file": "general/config/keys/development_auth0.json",
+    "domain": "tussle.us.auth0.com"
+  },
+  "openai": {
+    "enabled": false,
+    "key": "",
+    "api_base": null
+  },
+  "data_repositories": {
+    "use_fixture": true,
+    "use_mongo_with_fixture": false,
+    "use_gcs_with_fixture": false
+  }
+}

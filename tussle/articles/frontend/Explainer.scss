@@ -1,0 +1,22 @@
+.explainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .explainer-card {
+    width: 100%;
+    text-align: center;
+
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  .skip-text {
+    color: blue;
+    cursor: pointer;
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,62 @@
+
+
+.article-editor {
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: stretch;
+  justify-content: center;
+
+  padding-top: 5vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-bottom: 5vh;
+
+  .article-tabs-card {
+    flex-basis: 48px;
+    height: 48px !important;
+  }
+
+  .article-basic-info-editor {
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+  }
+
+  .article-testing-answer-editor {
+    text-align: left;
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+  }
+
+  .article-generating-prompt-editor {
+    text-align: left;
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+  }
+
+  .article-content-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 15px;
+
+  }
+}

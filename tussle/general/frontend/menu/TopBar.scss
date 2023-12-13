@@ -1,0 +1,48 @@
+@use "../components/sizes";
+
+.top-bar {
+    height: sizes.$top-bar-size;
+    border-bottom: 1px solid rgb(229, 234, 242);
+    display: flex;
+    flex-direction: row;
+    background-color: #670073;
+    justify-content: space-between;
+
+    & > div {
+        flex-basis: 50%;
+    }
+
+    .logo-area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+        color: white;
+        flex-grow: 0;
+        padding: 15px;
+        font-size: 24px;
+        font-weight: bold;
+
+        .logo-text {
+            margin-right: 10px;
+        }
+    }
+
+    .logo-image {
+        position: relative;
+        height: 50px;
+    }
+
+    /*
+     * Set the properties for the chart title editor
+     */
+    .chart-title-editor {
+        input {
+            color: white;
+            caret-color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+}

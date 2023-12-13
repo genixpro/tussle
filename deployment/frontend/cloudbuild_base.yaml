@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    id: Build Base Docker Image for frontend builds
+    args:
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend-base:$REVISION_ID"
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend-base:latest"
+      - "--cache=true"
+      - "--cache-ttl=720h"
+      - "--snapshot-mode=time"
+      - "-f"
+      - "deployment/frontend/base.Dockerfile"
+    timeout: 600s
+timeout: 3600s
+options:
+  machineType: 'E2_HIGHCPU_8'

@@ -1,0 +1,17 @@
+steps:
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    id: Build base image for API Server
+    args:
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-api/tussle-api-base:$REVISION_ID"
+      - "--destination=us-central1-docker.pkg.dev/tussle/tussle-api/tussle-api-base:latest"
+      - "--cache=true"
+      - "--cache-ttl=720h"
+      - "--snapshot-mode=time"
+      - "--build-arg"
+      - "REVISION_ID=$REVISION_ID"
+      - "-f"
+      - "deployment/api/base.Dockerfile"
+    timeout: 1200s
+timeout: 15000s
+options:
+  machineType: 'E2_HIGHCPU_8'

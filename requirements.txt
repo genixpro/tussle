@@ -1,0 +1,17 @@
+flask
+openai
+flask-cors
+gunicorn
+pymongo
+flask_restful
+jwcrypto
+oauth2client
+tenacity
+requests
+dependency-injector
+flexmock
+dataclasses-json
+timeout_decorator
+lorem
+google-cloud-secret-manager
+ansicolors

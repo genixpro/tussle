@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tussle-__ARTICULON_ENV__-frontend
+  name: tussle-__ARTICULON_ENV__-frontend
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: tussle-__ARTICULON_ENV__-frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: __MAX_SURGE__
+      maxUnavailable: __MAX_UNAVAILABLE__
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: tussle-__ARTICULON_ENV__-frontend
+    spec:
+      containers:
+        - image: us-central1-docker.pkg.dev/tussle/tussle-frontend/tussle-frontend:__REVISION_ID__
+          imagePullPolicy: IfNotPresent
+          name: tussle-cloud-sha256
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              # Set the limit to 4 cpus, so we can allow bursts of activity.
+              # In the beginning, we allow significant burst load, at least
+              # until we have enough traffic to justify dedicated CPU for each
+              # server
+              cpu: 4000m
+              memory: 128Mi
+          livenessProbe:
+            failureThreshold: 3
+            exec:
+              command:
+                - curl
+                - http://localhost:80/
+            initialDelaySeconds: 30
+            periodSeconds: 3
+            successThreshold: 1
+            timeoutSeconds: 1
+          # Mount a volume at /etc/gcp to containing the file key.json taken from the secret production-key
+          volumeMounts:
+              - mountPath: /etc/nginx/ssl/
+                name: tussle-ssl
+                readOnly: true
+      volumes:
+        - name: tussle-ssl
+          secret:
+            secretName: tussle-ssl
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+

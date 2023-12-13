@@ -1,0 +1,66 @@
+{
+  "name": "tussle",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@auth0/auth0-react": "^2.2.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.2",
+    "axios": "^1.4.0",
+    "axios-etag-cache": "^1.4.0",
+    "lodash": "^4.17.21",
+    "md5-hex": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dnd": "14.0.4",
+    "react-dnd-html5-backend": "^14.1.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "lint": "npx eslint tussle",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "cypress:open": "tussle/general/cypress open",
+    "cypress:run": "tussle/general/cypress run",
+    "cypress:cicd": "cypress-parallel -s cypress:run --no-sandbox -t 3 -d \\\\\\\"tussle/general/cypress/e2e/**/*.cy.js\\\\\\\"",
+    "cypress:parallel": "cypress-parallel -s cypress:run --no-sandbox -t 8 -d \\\\\\\"tussle/general/cypress/e2e/**/*.cy.js\\\\\\\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:cypress/recommended"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "cypress": "^13.2.0",
+    "cypress-parallel": "^0.13.0",
+    "cypress-terminal-report": "^5.3.6",
+    "eslint-plugin-cypress": "^2.15.1",
+    "gremlins.js": "^2.2.0",
+    "react-app-rewired": "^2.2.1",
+    "sass": "^1.64.1",
+    "source-map-explorer": "^2.5.3"
+  }
+}

@@ -1,0 +1,52 @@
+@use "../components/colors";
+@use "../components/sizes";
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.App .below-top-bar {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+
+  .left-side-menu {
+    height: calc(100vh - sizes.$top-bar-size);
+  }
+
+  .main-content-area {
+    background-color: #eee;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+
+    width: calc(100vw - sizes.$left-side-menu-width);
+    height: calc(100vh - sizes.$top-bar-size);
+
+    .main-content-area-inner {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      align-items: stretch;
+      overflow-y: auto;
+
+      height: calc(100vh - sizes.$top-bar-size - sizes.$bottom-bar-size);
+    }
+  }
+}
+
+
+// This is a general CSS class that is applied to a lot of text input elements across the app
+.always-show-caret {
+  caret-color: black !important;
+}
