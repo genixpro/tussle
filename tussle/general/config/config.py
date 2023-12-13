@@ -40,7 +40,7 @@ def get_environment_config_from_gcs_secrets(environment):
 
     client = secretmanager.SecretManagerServiceClient()
     # Build the resource name of the secret.
-    name = client.secret_version_path("tussle", f"{environment}_environment_config", "latest")
+    name = client.secret_version_path("notional-clover-408014", f"{environment}_environment_config", "latest")
     response = client.access_secret_version(request={"name": name})
     data = json.loads(response.payload.data.decode("UTF-8"))
     return data
